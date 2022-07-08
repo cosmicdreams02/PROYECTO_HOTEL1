@@ -1,0 +1,1 @@
+const {mongo,MongoClient,mydb,coleccion1,coleccion2,url} = require ("../database/mongo");

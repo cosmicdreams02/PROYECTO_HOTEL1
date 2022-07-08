@@ -1,2 +1,2 @@
-# PROYECTO_HOTEL1
+# Proyecto-Hotel
 Booking Hotel
