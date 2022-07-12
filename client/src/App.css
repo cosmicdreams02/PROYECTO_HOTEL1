@@ -57,8 +57,7 @@ html {
 /* HOME
  */
  .background {
-  background-color: aqua ;
- }
+  background-image: linear-gradient(to right bottom, #009efa, #00a9fd, #00b3fe, #00bdfe, #00c6fe, #00cefe, #00d6fc, #00ddfa, #00e5f6, #0eedf0, #32f4e8, #4ffbdf); }
 
 .link a{
   text-decoration: none;

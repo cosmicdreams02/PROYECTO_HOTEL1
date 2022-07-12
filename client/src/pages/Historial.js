@@ -57,7 +57,7 @@ function Historial() {
         <div>
             <div className="col-lg-4 col-md-10 col-xs-12 mx-auto mt-4">
                 <input type="text" className="id_reserva form-control mt-3" placeholder="Introduce el id de tu reserva" onChange={(e) => setId_reserva(e.target.value)} />
-                <input type="button" value="cancelarReserva " className="btn btn-dark mt-3" onClick={() => deleteReserva()} />
+                <input type="button" value="Cancelar Reserva " className="btn btn-dark mt-3" onClick={() => deleteReserva()} />
             </div>
         </div>
     )

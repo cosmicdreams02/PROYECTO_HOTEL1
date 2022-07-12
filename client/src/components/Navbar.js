@@ -11,14 +11,14 @@ function NavbarComponente() {
         <div>
             <Navbar className='background' expand="lg">
                 <Container className="col-12">
-                    <Navbar.Brand href="#home">Cosmic Dreams Hotel</Navbar.Brand>
+                    <Navbar.Brand href="#home">COSMIC DREAMS HOTEL</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link className="link"> <Link to="/home">Home</Link></Nav.Link>
                             <Nav.Link className="link"> <Link to="/registro">Registro</Link></Nav.Link>
                             <Nav.Link className="link"> <Link to="/login">Login</Link></Nav.Link>
-                            <Nav.Link className="link"> <Link to="/login">Habitaciones</Link></Nav.Link>
+                            <Nav.Link className="link"> <Link to="/habitaciones">Habitaciones</Link></Nav.Link>
                             <Nav.Link className="link"> <Link to="/galeria">Galeria</Link></Nav.Link>
                             <Nav.Link className="link"> <Link to="/contacto">Contacto</Link></Nav.Link>
                             <Nav.Link className="link"> <Link to="/historial">Historial</Link></Nav.Link>

@@ -1,6 +1,7 @@
 
 const connection = require("../database/Hotelsql");
 const mysql = require("mysql")
+const bcrypt = require("bcrypt");
 
 const mongo = require('mongodb');
 const { MongoClient, mydb, coleccion1, coleccion2, url } = require("../database/mongo.js")
@@ -22,6 +23,7 @@ const user = {
         var email = req.body.email;
         var contrasena = req.body.contrasena;
 
+        
         let insertQuery = `INSERT INTO Clientes (nombre,dni,telefono,codpostal,email,contrasena)VALUES (?,?,?,?,?,?)`;
         let query2 = mysql.format(insertQuery, [nombre, dni, telefono, codpostal, email, contrasena]);
 
@@ -31,7 +33,7 @@ const user = {
 
             //connection.end();
         });
-
+        
         res.send('Registro realizado correctamente')
     },
 
@@ -125,6 +127,28 @@ const user = {
 
 
         res.send('Reserva Cancelada')
+    },
+    
+    datoscontacto: (req, res) => {
+        console.log(req.body);
+        var nombre = req.body.nombre;
+        var email = req.body.email;
+        var telefono = req.body.telefono;
+        var mensaje = req.body.mensaje;
+
+
+        let insertQuery = `INSERT INTO Contacto (nombre,email,telefono,mensaje)VALUES (?,?,?,?)`;
+        let query2 = mysql.format(insertQuery, [nombre, email, telefono, mensaje]);
+
+        connection.query(query2, (err, response) => {
+            if (err) throw err;
+            console.log(response.insertId);
+
+            //connection.end();
+        });
+
+        res.send("Formulario de contacto enviado correctamente")
+        console.log(res);
     },
 
     historial: (req, res) => {
