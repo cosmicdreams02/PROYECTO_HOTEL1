@@ -77,6 +77,7 @@ function Historial() {
                     <div className="col-lg-2 col-md-10 col-xs-12 mx-auto mt-4">
                         <Card style={{ width: '24.5rem' }}>
                             <Card.Body >
+                                
                                 <Card.Text>Numero de huespedes: {historial.numerodehuspedes}</Card.Text>
                                 <Card.Text>Fecha de ingreso: {historial.fechaingreso}</Card.Text>
                                 <Card.Text>Fecha de salida: {historial.fechasalida}</Card.Text>

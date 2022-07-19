@@ -41,6 +41,7 @@ const user = {
         var contrasena = req.body.contrasena;
 
         let selectQuery = `SELECT * FROM Login WHERE email =  '${email}' AND contrasena = '${contrasena}'`
+        console.log(selectQuery)
         connection.query(selectQuery, (err, data) => {
             console.log(data);
             if (err) throw err;
@@ -49,6 +50,7 @@ const user = {
                 res.send(data[0])
             } else {
                 console.log("Email y contraseña correctos")
+                
                 res.send(data[0])
             }
             //connection.end();
@@ -57,67 +59,58 @@ const user = {
         console.log(res);
     },
 
+
     reservas: (req, res) => {
 
 
-        let checkeoReservasIndividuales = 'SELECT  COUNT(*) FROM Reservas WHERE tipo_habitacion = "individual"';
-        let checkeoReservasDobles = 'SELECT  COUNT(*) FROM Reservas WHERE tipo_habitacion = "doble"';
-        let checkeoReservasTriples = 'SELECT  COUNT(*) FROM Reservas WHERE tipo_habitacion = "triple"';
+/*             let checkeoReservasIndividuales = 'SELECT  COUNT(*) FROM Reservas WHERE tipo_habitacion = "individual"';
+            let checkeoReservasDobles = 'SELECT  COUNT(*) FROM Reservas WHERE tipo_habitacion = "doble"';
+            let checkeoReservasTriples = 'SELECT  COUNT(*) FROM Reservas WHERE tipo_habitacion = "triple"'; 
 
-        connection.query(checkeoReservasIndividuales, (err, data) => {
-            if(err) throw err;
-            console.log(data);
-            //connection.end();
-            if(data <= 10) {
-                console.log("Aun quedan habitaciones disponibles")
-            } else {
-                console.log("No quedan habitaciones individuales disponibles")
-            }
-        });
+            connection.query(checkeoReservasIndividuales, (err, data) => {
+                if(err) throw err;
+                console.log(data);
+                //connection.end();
+                if(data <= 10) {
+                    console.log("Aun quedan habitaciones disponibles")
+                } else {
+                    console.log("No quedan habitaciones individuales disponibles")
+                }
+            });
+    
+            connection.query(checkeoReservasDobles, (err, data) => {
+                if(err) throw err;
+                console.log(data);
+                //connection.end();
+                if(data <= 10) {
+                    console.log("Aun quedan habitaciones disponibles")
+                } else {
+                    console.log("No quedan habitaciones dobles disponibles")
+                }
+            }); */
 
-        connection.query(checkeoReservasDobles, (err, data) => {
-            if(err) throw err;
-            console.log(data);
-            //connection.end();
-            if(data <= 10) {
-                console.log("Aun quedan habitaciones disponibles")
-            } else {
-                console.log("No quedan habitaciones dobles disponibles")
-            }
-        });
 
-
-        connection.query(checkeoReservasTriples, (err, data) => {
-            if(err) throw err;
-            console.log(data);
-            //connection.end();
-            if(data <= 10) {
-                console.log("Aun quedan habitaciones disponibles")
-            } else {
-                console.log("No quedan habitaciones triples disponibles")
-            }
-        });
- 
 
         console.log(req.body);
         var huespedes = req.body.huespedes;
         var fecha_entrada = req.body.fecha_entrada;
         var fecha_salida = req.body.fecha_salida;
         var tipo_habitacion = req.body.tipo_habitacion;
+        var precio;
 
-        if(tipo_habitacion = "individual") {
-            var precio = 50;
+        if (tipo_habitacion == "individual") {
+            precio = 50;
             console.log("Has escogido una habitacion individual");
-        } else if (tipo_habitacion = "doble") {
+        } else if (tipo_habitacion == "doble") {
             console.log("Has escogido una habitacion doble");
-            var precio = 100;
-        } else if (tipo_habitacion = "triple") {
-            var precio = 150;
+            precio = 100;
+        } else if (tipo_habitacion == "triple") {
+            precio = 150;
             console.log("Has escogido una habitacion triple");
         }
 
         let insertQuery = `INSERT INTO Reservas (precio,huespedes,fecha_entrada,fecha_salida,tipo_habitacion)VALUES (?,?,?,?,?)`;
-        let query2 = mysql.format(insertQuery, [precio,huespedes, fecha_entrada, fecha_salida, tipo_habitacion]);
+        let query2 = mysql.format(insertQuery, [precio, huespedes, fecha_entrada, fecha_salida, tipo_habitacion]);
 
         connection.query(query2, (err, response) => {
             if (err) throw err;
@@ -128,34 +121,34 @@ const user = {
 
         console.log(res);
 
-        
-        if(tipo_habitacion = "individual") {
-            var precio = 50;
+        if (tipo_habitacion == "individual") {
+            precio = 50;
             console.log("Has escogido una habitacion individual");
-        } else if (tipo_habitacion = "doble") {
+        } else if (tipo_habitacion == "doble") {
             console.log("Has escogido una habitacion doble");
-            var precio = 100;
-        } else if (tipo_habitacion = "triple") {
-            var precio = 150;
+            precio = 100;
+        } else if (tipo_habitacion == "triple") {
+            precio = 150;
             console.log("Has escogido una habitacion triple");
-        }       
-    //Insertar dentro de una coleccion de una BD
-    MongoClient.connect(url, function(err, db) {
-        if (err) throw err;
-        var dbo = db.db(mydb);
-        var myobj = {
-            precio : precio,
-            huespedes :  req.body.huespedes,
-            fecha_entrada : req.body.fecha_entrada,
-            fecha_salida : req.body.fecha_salida,
-            tipo_habitacion : req.body.tipo_habitacion,
         }
 
-        dbo.collection(coleccion2).insertOne(myobj, function(err, res) {
+        //Insertar Datos de Reserva en Historial.
+        MongoClient.connect(url, function (err, db) {
             if (err) throw err;
-            console.log("Documento insertado");
-            db.close();
-        });
+            var dbo = db.db(mydb);
+            var myobj = {
+                precio: precio,
+                huespedes: req.body.huespedes,
+                fecha_entrada: req.body.fecha_entrada,
+                fecha_salida: req.body.fecha_salida,
+                tipo_habitacion: req.body.tipo_habitacion,
+            }
+
+            dbo.collection(coleccion2).insertOne(myobj, function (err, res) {
+                if (err) throw err;
+                console.log("Documento insertado");
+                db.close();
+            });
         });
     },
 
@@ -201,14 +194,14 @@ const user = {
         console.log(res);
     },
 
-     historial: (req, res) => {
+    historial: (req, res) => {
 
         //Ver todos 
         MongoClient.connect(url, function (err, db) {
             if (err) throw err;
             var dbo = db.db(mydb);
-            
-            dbo.collection(coleccion2).find({"$oid": "62d66335219f39fb97c5775d"}).toArray(function (err, result) {
+
+            dbo.collection(coleccion2).find({ "$oid": "62d66335219f39fb97c5775d" }).toArray(function (err, result) {
                 if (err) throw err;
                 console.log(result);
                 db.close();
@@ -216,8 +209,8 @@ const user = {
             });
         });
 
-        
-    }, 
+
+    },
 
 
     cancelareservas: (req, res) => {
@@ -230,20 +223,12 @@ const user = {
             console.log(response);
             //connection.end();
         });
-        
+
         res.send('Reserva Cancelada')
     },
 }
 
 module.exports = user;
-
-
-
-
-
-
-
-
 
 
 
