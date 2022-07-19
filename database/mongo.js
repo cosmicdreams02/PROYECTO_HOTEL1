@@ -11,7 +11,6 @@ module.exports =
     mongo: mongo,
     MongoClient: MongoClient,
     mydb: mydb,
-    coleccion1: coleccion1,
     coleccion2: coleccion2,
     url: url
 }
