@@ -8,7 +8,8 @@ router.post("/login", user.login);
 router.post("/reservas", user.reservas);
 router.post("/datostarjeta", user.datostarjeta);
 router.post("/datoscontacto", user.datoscontacto);
-router.post("/cancelareservas", user.cancelareservas);
+/* router.post("/cancelareservas", user.cancelareservas);
+ */
 router.post("/historial", user.historial);
 
 

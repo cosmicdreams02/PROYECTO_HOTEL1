@@ -36,8 +36,9 @@ function Login() {
     fetch("login", requestOptions)
     .then((response) => response.json())
     .then((response) => {
-        console.log(response) // Manejarlo con usseEffect para ver si esta bien o mal y pintarlo o no. 
+        console.log(response) 
     });
+
     navigate("/reservas")
 
 };

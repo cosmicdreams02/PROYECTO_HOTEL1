@@ -50,7 +50,7 @@ const user = {
                 res.send(data[0])
             } else {
                 console.log("Email y contraseña correctos")
-                
+
                 res.send(data[0])
             }
             //connection.end();
@@ -201,7 +201,7 @@ const user = {
             if (err) throw err;
             var dbo = db.db(mydb);
 
-            dbo.collection(coleccion2).find({ "$oid": "62d66335219f39fb97c5775d" }).toArray(function (err, result) {
+            dbo.collection(coleccion2).find({}).toArray(function (err, result) {
                 if (err) throw err;
                 console.log(result);
                 db.close();
@@ -213,7 +213,7 @@ const user = {
     },
 
 
-    cancelareservas: (req, res) => {
+/*     cancelareservas: (req, res) => {
         console.log(req.body);
         var id_reserva = req.body.id_reserva;
 
@@ -225,7 +225,7 @@ const user = {
         });
 
         res.send('Reserva Cancelada')
-    },
+    }, */
 }
 
 module.exports = user;
