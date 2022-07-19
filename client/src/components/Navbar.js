@@ -11,7 +11,7 @@ function NavbarComponente() {
         <div>
             <Navbar className='background' expand="lg">
                 <Container className="col-12">
-                    <Navbar.Brand href="#home">COSMIC DREAMS HOTEL</Navbar.Brand>
+                    <Navbar.Brand className='link'><Link to="/home">COSMIC DREAMS HOTEL</Link></Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
@@ -38,8 +38,3 @@ export default NavbarComponente;
 
 
 
-<ul>
-    <li>
-        <Link to="/home">Home</Link>
-    </li>
-</ul>

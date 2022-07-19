@@ -1,6 +1,12 @@
 import React, { Component } from "react"
 import Carousel from 'react-bootstrap/Carousel';
 
+import home1 from '../assets/home1.jpg'
+import home2 from '../assets/home2.jpg'
+import home3 from '../assets/home3.jpg'
+
+
+
 class Home extends Component {
 
     render() {
@@ -10,7 +16,7 @@ class Home extends Component {
                     <Carousel.Item interval={3000}>
                         <img
                             className="d-block w-100"
-                            src="http://www.hozting.id/templates/travel01/wp-content/uploads/2017/01/maldive-islands-04.jpeg"
+                            src={home1}
                             alt="First slide"
                         />
                         <Carousel.Caption>
@@ -20,7 +26,7 @@ class Home extends Component {
                     <Carousel.Item interval={3000}>
                         <img
                             className="d-block w-100"
-                            src="https://imtmonline.com/wp-content/uploads/2020/07/DJI_0394.jpg"
+                            src= {home2}
                             alt="Second slide"
                         />
                         <Carousel.Caption>
@@ -30,7 +36,7 @@ class Home extends Component {
                     <Carousel.Item interval={3000}>
                         <img
                             className="d-block w-100"
-                            src="https://img1.fonwall.ru/o/yw/maldivy-tropiki-more-kurort.jpg"
+                            src={home3}
                             alt="Third slide"
                         />
                         <Carousel.Caption>

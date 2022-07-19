@@ -71,8 +71,6 @@ function Registro() {
 
             </div>
 
-
-
         </div>
     )
 }

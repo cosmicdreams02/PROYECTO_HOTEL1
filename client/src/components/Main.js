@@ -22,8 +22,8 @@ class Main extends Component {
         return (
             <div>
                 <Navbar />
+                <Home />
                 <Routes>
-                    <Route path="/home" element={<Home />} />
                     <Route path="/registro" element={<Registro />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/habitaciones" element={<Habitaciones />} />

@@ -1,13 +1,13 @@
 //importar React y los elementos useState y useEffect.
-import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 
 
 //Componente Funcional.
 function Reservas() {
     const navigate = useNavigate();
 
-    // Estados para el nombre, apellidos, dni, telefono, codpostal, email, contrasena.
+    // Estados para huespedes, fecha_entrada, fecha_salida, tipo_habitacion.
     const [huespedes, setHuespedes] = useState("");
     const [fecha_entrada, setFecha_entrada] = useState("");
     const [fecha_salida, setFecha_salida] = useState("");
@@ -46,7 +46,7 @@ function Reservas() {
         fetch("reservas", requestOptions)
             .then((response) => response.json())
             .then((response) => {
-                console.log(response) // Manejarlo con usseEffect para ver si esta bien o mal y pintarlo o no. 
+                console.log(response) 
             });
  
             navigate("/pago")

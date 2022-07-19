@@ -19,9 +19,6 @@ function Contacto() {
         console.log(` Nombre  ${nombre} con email ${email} telefono ${telefono} mensaje ${mensaje}`) ;
  
 
-
-
-
         const datosContacto = {
             nombre,
             email,
@@ -43,7 +40,7 @@ function Contacto() {
         fetch("datoscontacto", requestOptions)
             .then((response) => response.json())
             .then((response) => {
-                console.log(response) // Manejarlo con usseEffect para ver si esta bien o mal y pintarlo o no. 
+                console.log(response)
             });
         navigate("/home")
 
